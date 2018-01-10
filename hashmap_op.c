@@ -1,4 +1,16 @@
-# include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hashmap_op.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stoupin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/10 14:59:31 by stoupin           #+#    #+#             */
+/*   Updated: 2018/01/10 14:59:33 by stoupin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "ft.h"
 #include "hashmap.h"
 
@@ -20,7 +32,7 @@ int	hashmap_put(t_hashmap_env *env, t_hashmap *m, char *key, void *value)
 	m->data[index].data = value;
 	m->data[index].key = key;
 	m->data[index].in_use = 1;
-	m->size++; 
+	m->size++;
 	return (MAP_OK);
 }
 
@@ -28,7 +40,7 @@ int	hashmap_put(t_hashmap_env *env, t_hashmap *m, char *key, void *value)
 ** Get your pointer out of the hashmap with a key
 */
 
-int	hashmap_get(t_hashmap_env *env, t_hashmap *m, char* key, void **arg)
+int	hashmap_get(t_hashmap_env *env, t_hashmap *m, char *key, void **arg)
 {
 	int	curr;
 	int	i;
@@ -39,7 +51,8 @@ int	hashmap_get(t_hashmap_env *env, t_hashmap *m, char* key, void **arg)
 	while (i < MAX_CHAIN_LENGTH)
 	{
 		in_use = m->data[curr].in_use;
-		if (in_use == 1){
+		if (in_use == 1)
+		{
 			if (ft_strcmp(m->data[curr].key, key) == 0)
 			{
 				*arg = m->data[curr].data;
@@ -118,7 +131,7 @@ int	hashmap_remove(t_hashmap_env *env, t_hashmap *m, char *key)
 ** Return the length of the hashmap
 */
 
-int			hashmap_length(t_hashmap *m)
+int	hashmap_length(t_hashmap *m)
 {
 	if (m != NULL)
 		return (m->size);

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hashmap_crc32.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stoupin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/10 14:59:11 by stoupin           #+#    #+#             */
+/*   Updated: 2018/01/10 14:59:13 by stoupin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hashmap.h"
 
 /*
 ** Return a 32-bit CRC of the contents of the buffer.
 */
 
-static unsigned long crc32(t_hashmap_env *env,
-						   const unsigned char *s)
+static unsigned long	crc32(t_hashmap_env *env,
+								const unsigned char *s)
 {
 	unsigned int	i;
 	unsigned long	crc32val;
@@ -26,12 +38,12 @@ static unsigned long crc32(t_hashmap_env *env,
 ** and Knuth's Multiplicative Method
 */
 
-unsigned int		hashmap_hash_int(t_hashmap_env *env,
+unsigned int			hashmap_hash_int(t_hashmap_env *env,
 									t_hashmap *m,
 									char *keystring)
 {
-    unsigned long key;
-	
+	unsigned long key;
+
 	key = crc32(env, (unsigned char*)(keystring));
 	key += (key << 12);
 	key ^= (key >> 22);

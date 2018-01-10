@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stoupin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/10 14:59:34 by stoupin           #+#    #+#             */
+/*   Updated: 2018/01/10 14:59:39 by stoupin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -13,7 +25,7 @@ typedef struct	s_data
 	int		number;
 }				t_data;
 
-int	main(void)
+int				main(void)
 {
 	t_hashmap_env	env;
 	t_hashmap		*map;
@@ -21,7 +33,7 @@ int	main(void)
 	char			key_string[KEY_MAX_LENGTH];
 	t_data			*value;
 	int				error;
-	
+
 	hashmap_init(&env);
 	map = hashmap_new();
 	if (map == NULL)
